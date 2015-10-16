@@ -8,6 +8,8 @@ description := "Enrichment classes over JavaFX bindings to provide monadic opera
 
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
 
+startYear := Some(2015)
+
 homepage := Some(url("http://github.com/ElderResearch/monadic-jfx"))
 
 scalaVersion := "2.11.7"
@@ -27,6 +29,8 @@ libraryDependencies ++= Seq(
 // TODO: Get this to happen at initialization.
 compile in Compile := { javaVersionCheck.value; (compile in Compile).value }
 
+// Testing
+
 testOptions in Test ++= {
   if (System.getenv("TRAVIS") != null) {
     Seq(Tests.Filter(s ⇒ !s.endsWith("ExampleTest")))
@@ -35,3 +39,24 @@ testOptions in Test ++= {
 }
 
 fork in Test := true
+
+// Publishing
+
+publishMavenStyle := true
+
+publishArtifact in Test := false
+
+pomExtra in Global := {
+  <scm>
+    <url>http://github.com/ElderResearch/monadic-jfx</url>
+    <connection>scm:git:https://github.com/ElderResearch/monadic-jfx.git</connection>
+    <developerConnection>scm:git:git@github.com:/ElderResearch/monadic-jfx.git</developerConnection>
+  </scm>
+  <developers>
+    <developer>
+      <id>metasim</id>
+      <name>Simeon H.K. Fitch</name>
+      <url>https://github.com/metasim</url>
+    </developer>
+  </developers>
+}
