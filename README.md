@@ -1,19 +1,21 @@
 # monadic-jfx
 
+[![Build Status](https://travis-ci.org/ElderResearch/monadic-jfx.svg)](https://travis-ci.org/ElderResearch/monadic-jfx)
+
 Enrichment classes over JavaFX bindings to provide monadic operations in Scala.
 
 Implemented using the functional programming type-classes from [non/cats](https://github.com/non/cats).  
-  
+
 ## Getting Started
-  
+
 `monadic-jfx` requires Scala 2.11 and Java 8 build >= 40.
 
 The SBT dependency is:
 
     libraryDependencies += "com.elderresearch" %% "monadic-jfx" % "0.1.0"
-  
+
 In your code, add:
-  
+
     import eri.viz.gui.jfx.monadic._
 
 And then you can create derived bindings with `map` and `flatMap` from a JavaFX property/observable value:
@@ -21,7 +23,7 @@ And then you can create derived bindings with `map` and `flatMap` from a JavaFX 
     import javafx.beans.property.SimpleObjectProperty
     import javafx.scene.control.Label
     import eri.viz.gui.jfx.monadic._
-    
+
     // Create a simple data model with property hierarchy
     class Player {
       val name = new SimpleObjectProperty[String]("Player 1")
@@ -73,4 +75,3 @@ And then you can create derived bindings with `map` and `flatMap` from a JavaFX 
 
     currentPlayer.get.stats.get.highScore.set(1000000)
     assert(highScoreLabel.getText == ">> 1000000 <<")
-
