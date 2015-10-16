@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/ElderResearch/monadic-jfx.svg)](https://travis-ci.org/ElderResearch/monadic-jfx)
 
+[![Join the chat at https://gitter.im/ElderResearch/monadic-jfx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ElderResearch/monadic-jfx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Enrichment classes over JavaFX bindings to provide monadic operations in Scala.
 
 Implemented using the functional programming type-classes from [non/cats](https://github.com/non/cats).  
