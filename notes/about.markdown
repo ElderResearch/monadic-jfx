@@ -1,4 +1,4 @@
-# monadic-jfx
+# [monadic-jfx](https://github.com/ElderResearch/monadic-jfx)
 
 Enrichment classes over JavaFX bindings to provide monadic operations in Scala.
 
