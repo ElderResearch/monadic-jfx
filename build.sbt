@@ -6,6 +6,10 @@ organization := "com.elderresearch"
 
 description := "Enrichment classes over JavaFX bindings to provide monadic operations in Scala."
 
+licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
+
+homepage := Some(url("http://github.com/ElderResearch/monadic-jfx"))
+
 scalaVersion := "2.11.7"
 
 javaVersionPrefix in javaVersionCheck := Some("1.8")
@@ -23,3 +27,10 @@ libraryDependencies ++= Seq(
 // TODO: Get this to happen at initialization.
 compile in Compile := { javaVersionCheck.value; (compile in Compile).value }
 
+
+testOptions in Test ++= {
+  if (System.getenv("TRAVIS") != null) {
+    Seq(Tests.Argument("-oSD"), Tests.Argument("-l", "GUITest"))
+  }
+  else Seq()
+}

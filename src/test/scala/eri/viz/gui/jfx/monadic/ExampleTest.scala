@@ -41,7 +41,7 @@ class ExampleTest extends FunSpec with BeforeAndAfter {
   }
 
   describe("stand alone example") {
-    it("should update control property") {
+    it("should update control property", GUITest) {
       // Create a simple data model with property hierarchy
       class Player {
         val name = new SimpleObjectProperty[String]("Player 1")

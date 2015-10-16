@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.value.{ObservableValue, ChangeListener}
 
-import org.scalatest.FunSpec
+import org.scalatest.{Tag, FunSpec}
 
 /**
  * Common test environment.
@@ -52,3 +52,5 @@ trait MonadicJFXTestSpec extends FunSpec {
     val propA = new SimpleObjectProperty[A](this, "propA", new A)
   }
 }
+
+object GUITest extends Tag("eri.viz.gui.jfx.GUITest")
