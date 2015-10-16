@@ -27,10 +27,11 @@ libraryDependencies ++= Seq(
 // TODO: Get this to happen at initialization.
 compile in Compile := { javaVersionCheck.value; (compile in Compile).value }
 
-
 testOptions in Test ++= {
   if (System.getenv("TRAVIS") != null) {
-    Seq(Tests.Argument("-oSD"), Tests.Argument("-l", "GUITest"))
+    Seq(Tests.Filter(s ⇒ !s.endsWith("ExampleTest")))
   }
-  else Seq()
+  else Seq.empty
 }
+
+fork in Test := true
