@@ -22,8 +22,7 @@ libraryDependencies ++= Seq(
   "org.spire-math" %% "cats-core" % catsVersion,
   "org.spire-math" %% "cats-laws" % catsVersion % "test",
   "org.typelevel" %% "discipline" % "0.4" % "test",
-  "org.scalatest" %% "scalatest" % "3.0.0-M7" % "test",
-  "org.testfx" % "testfx-core" % "4.0.+" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.0-M7" % "test"
 )
 
 // TODO: Get this to happen at initialization.

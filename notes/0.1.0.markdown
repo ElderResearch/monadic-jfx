@@ -1,0 +1,2 @@
+* Initial release.
+  Supports `map` and `flatMap` over [`ObservableObjectValue[T]`](https://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableObjectValue.html).
