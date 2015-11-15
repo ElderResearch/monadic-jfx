@@ -91,7 +91,5 @@ package object monadic extends FunctorSyntax with FlatMapSyntax {
       implicitly[Functor[ObservableObjectValue]].map(ov)(f)
     def flatMap[R](f: T ⇒ ObservableObjectValue[R]): ObservableObjectValue[R] =
       implicitly[Monad[ObservableObjectValue]].flatMap(ov)(f)
-    def foreach[U](f: T ⇒ U): Unit = { map(f); () }
   }
-
 }
