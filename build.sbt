@@ -1,6 +1,6 @@
 name := "monadic-jfx"
 
-version := "0.1.0"
+version := "0.1.1"
 
 organization := "com.elderresearch"
 
@@ -22,20 +22,26 @@ libraryDependencies ++= Seq(
   "org.spire-math" %% "cats-core" % catsVersion,
   "org.spire-math" %% "cats-laws" % catsVersion % "test",
   "org.typelevel" %% "discipline" % "0.4" % "test",
-  "org.scalatest" %% "scalatest" % "3.0.0-M7" % "test",
-  "org.testfx" % "testfx-core" % "4.0.+" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.0-M7" % "test"
 )
 
-// TODO: Get this to happen at initialization.
-compile in Compile := { javaVersionCheck.value; (compile in Compile).value }
+// Force Java8 compliance at startup.
+onLoad in Global := {
+  val previous = (onLoad in Global).value
+  val checker = (s: State) => {
+    Project.runTask(javaVersionCheck, s).map(_._1).getOrElse(s)
+  }
+  checker compose previous
+}
 
 // Testing
-
 testOptions in Test ++= {
   if (System.getenv("TRAVIS") != null) {
     Seq(Tests.Filter(s ⇒ !s.endsWith("ExampleTest")))
   }
-  else Seq.empty
+  else {
+    Seq.empty
+  }
 }
 
 fork in Test := true
@@ -52,11 +58,11 @@ pomExtra in Global := {
     <connection>scm:git:https://github.com/ElderResearch/monadic-jfx.git</connection>
     <developerConnection>scm:git:git@github.com:/ElderResearch/monadic-jfx.git</developerConnection>
   </scm>
-  <developers>
-    <developer>
-      <id>metasim</id>
-      <name>Simeon H.K. Fitch</name>
-      <url>https://github.com/metasim</url>
-    </developer>
-  </developers>
+    <developers>
+      <developer>
+        <id>metasim</id>
+        <name>Simeon H.K. Fitch</name>
+        <url>https://github.com/metasim</url>
+      </developer>
+    </developers>
 }
