@@ -15,7 +15,7 @@ Implemented using the functional programming type-classes from [non/cats](https:
 The SBT dependency is:
 
 ```scala
-libraryDependencies += "com.elderresearch" %% "monadic-jfx" % "0.1.0"
+libraryDependencies += "com.elderresearch" %% "monadic-jfx" % "0.1.1"
 ```
 
 In your code, add:
